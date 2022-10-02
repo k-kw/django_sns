@@ -1,6 +1,8 @@
 */__pycache__/*.pyc
 */migrations/__pycache__/*.pyc
 db.sqlite3
-/media/*
+/media/dmimgs/*
+/media/postimgs/*
+/media/prfimgs/*
 !/media/prfimgs/default.png
 add_env.sh
