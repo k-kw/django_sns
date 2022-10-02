@@ -55,7 +55,9 @@ def upprofile(request):
 @login_required(login_url='login')
 def set_default(request):
     loginuser=request.user
-    #print(settings.MEDIA_ROOT+'/default.png')
+    print(settings.MEDIA_ROOT+'/prfimgs/'+'default.png')
+    print(settings.DEBUG)
+    
     userprofile=Userprofile(user=loginuser, msg='未設定', prfimg='default.png')
     userprofile.save()
     print(f'Set_default_{loginuser.username}_profile\n')

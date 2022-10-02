@@ -4,5 +4,5 @@ db.sqlite3
 /media/dmimgs/*
 /media/postimgs/*
 /media/prfimgs/*
-!/media/prfimgs/default.png
+!/media/default.png
 add_env.sh
