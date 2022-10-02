@@ -1,0 +1,22 @@
+{% load static %}
+{% block content %}
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+</head>
+<body class="container mt-5">
+<h1>ログイン</h1>
+<p>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">ログイン</button>
+</form>
+</p>
+<p class="h5"><a href="{% url 'signup' %}">新たにアカウントを登録</a></p>
+<p class="h5"><a href="{% url 'userlist' %}">ユーザ一覧</a></p>
+<p class="h5"><a href="{% url 'bbsall' %}">掲示板</a></p>
+</body>
+{% endblock %}

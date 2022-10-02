@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>SIGNUP</title>
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+    </head>
+</html>
+<body class="container mt-5">
+    <h1>登録情報を入力してください</h1>
+    <p>ユーザー名とメールアドレスはアカウント識別のために使用します。メールアドレスは使っていないもので構いません。</p>
+    <p>
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="サインアップ">
+    </form>
+    </p>
+    <p class="h5"><a href="{% url 'login' %}">既にアカウントをお持ちの方</a></p>
+</body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>{{head}}</title>
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+    </head>
+    <body class="container mt-5">
+        <h1>{{name}}</h1>
+        <h2><a href="{% url 'follow_list' profile.id 'wer' %}">フォロワー: {{cnt_follower}}</a></h2>
+        <h2><a href="{% url 'follow_list' profile.id 'wee' %}">フォロー中: {{cnt_followee}}</a></h2>
+        <p>{{profile.msg}}</p>
+        <p><img src="{{profile.prfimg.url}}" width="100" height=auto></p>
+        <p>
+        <table class="table">
+            {% for item in postmsgs %}
+            <tr>
+                {% if item.imgflg %}
+                <td><img src="{{item.img.url}}" width="100" height=auto class="mr-5">{{item.msg}}</td>
+                {% else %}
+                <td>{{item.msg}}</td>
+                {% endif %}
+                
+                <td>{{item.userprf.user.username}}</td>
+                <td>{{item.createtime}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+        </p>
+        <p class="h5"><a href="{% url 'logout' %}">ログアウト</a></p>
+        <p class="h5"><a href="{% url 'editprofile' %}">プロフィール修正</a></p>
+        <p class="h5"><a href="{% url 'userlist' %}">ユーザ一覧</a></p>
+        <p class="h5"><a href="{% url 'bbsall' %}">掲示板</a></p>
+        <p class="h5"><a href="{% url 'postmsgc' %}">掲示板投稿</a></p>
+    </body>
+</html>

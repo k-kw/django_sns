@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+    </head>
+    <body class="container mt-5">
+        <h1>{{head}}</h1>
+        <p class="h5"><a href="{% url 'publicprofile' objprf.id %}">{{objprf.user.username}}のプロフィールへ</a></p>
+
+        <table class="table">
+            {% for item in flw_prf_list %}
+            <tr>
+                
+                <td><img src="{{item.prfimg.url}}" width="100" height=auto></td>
+                <td><a href="{% url 'publicprofile' item.id %}">{{item.user.username}}</a></td>
+                <td>{{item.msg}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p class="h5"><a href="{% url 'yourprofile' %}">あなたのプロフィール</a></p>
+        <p class="h5"><a href="{% url 'bbsall' %}">掲示板</a></p>
+
+    </body>
+</html>

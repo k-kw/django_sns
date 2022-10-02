@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+    </head>
+    <body class="container mt-5">
+        <div class="container mt-5">
+            <h1>{{head1}}</h1>
+            <form method="post" action="{% url 'postmsgre' targetmsg.id %}" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="この内容で返信">
+            </form>
+            
+        </div>
+
+        <div class="container mt-5">
+                <table class="table">
+                    {% if targetmsg.imgflg %}
+                    <td><img src="{{targetmsg.img.url}}" width="100" height=auto class="mr-5">{{targetmsg.msg}}</td>
+                    {% else %}
+                    <td>{{targetmsg.msg}}</td>
+                    {% endif %}
+                    <td><a href="{% url 'publicprofile' targetmsg.userprf.id %}">{{targetmsg.userprf.user.username}}</a></td>
+                    <td>{{targetmsg.createtime}}</td>
+                </table>
+        </div>
+
+        
+        <div class="container mt-5">
+            <h1>{{head2}}</h1>
+            <table class="table">
+                {% for item in res %}
+                
+                <tr>
+                    
+                    {% if item.imgflg %}
+                    <td><img src="{{item.img.url}}" width="100" height=auto class="mr-5">{{item.msg}}</td>
+                    {% else %}
+                    <td>{{item.msg}}</td>
+                    {% endif %}
+                    
+    
+                    <td><a href="{% url 'publicprofile' item.userprf.id %}">{{item.userprf.user.username}}</a></td>
+                    <td>{{item.createtime}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="container mt-5">
+        <p class="h5"><a href="{% url 'yourprofile' %}">あなたのプロフィール</a></p>
+        <p class="h5"><a href="{% url 'userlist' %}">ユーザ一覧</a></p>
+        <p class="h5"><a href="{% url 'bbsall' %}">掲示板</a></p>
+        </div>
+
+    </body>
+</html>
