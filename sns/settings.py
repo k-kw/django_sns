@@ -176,4 +176,4 @@ MEDIA_URL='/media/'
 if DEBUG:
     MEDIA_ROOT=osp.join(BASE_DIR, "media")
 else :
-    MEDI_ROOT=f'/var/www/{BASE_DIR.name}/media'
+    MEDI_ROOT='/media'
